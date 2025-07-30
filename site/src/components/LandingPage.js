@@ -60,9 +60,7 @@ const Subheadline = styled.p`
   animation: ${fadeInUp} 0.8s 0.4s ease-out forwards;
 `;
 
-const linkDeDestino = "https://t.me/obranca"; 
-
-const CtaButton = styled.a`
+ const CtaButton = styled.a`
   display: inline-block;
   padding: 15px 35px;
   margin-top: 20px;
@@ -85,10 +83,14 @@ const CtaButton = styled.a`
   }
 `;
 
-
-// --- Componente React ---
+const linkDeDestino = "https://t.me/obranca";
 
 const LandingPage = () => {
+  const handleButtonClick = () => {
+    if (typeof window.ttq !== 'undefined') {
+      window.ttq.track('CompletePayment'); 
+    }
+  };
   return (
     <PageContainer>
       <ContentWrapper>
@@ -96,7 +98,7 @@ const LandingPage = () => {
         <Subheadline>
           Acreditamos que as melhores coisas da vida são inesperadas. Preparei algo especial que você não vai querer perder.
         </Subheadline>
-        <CtaButton href={linkDeDestino}>
+        <CtaButton href={linkDeDestino} onClick={handleButtonClick}>
           REVELAR A SURPRESA 🎁
         </CtaButton>
       </ContentWrapper>
